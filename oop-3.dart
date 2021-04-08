@@ -1,19 +1,17 @@
-class Animal {
+abstract class Animal {
   String nome;
   double _peso;    
   
   Animal(this.nome, this._peso);      
   
-  double get peso {
-    return _peso;
-  }
+  double get peso => _peso;
+  
+  void fazerSom();
       
   void comer(double comida) {
     _peso += comida;
     print("$nome comeu! Seu peso agora é de ${peso} quilos!");
-  }
-  
-  void fazerSom() => print("$nome fez um som");
+  }  
 }
 
 
@@ -23,6 +21,11 @@ class  Cachorro extends Animal {
   
   @override
   void fazerSom() => print("$nome fez auau!!!");
+  
+  @override
+  String toString() {
+    print("Cachorro | Nome: $nome, Peso: $peso");
+  }
 }
 
 
@@ -39,6 +42,7 @@ void main () {
   dog.comer(2);
   dog.fazerSom();
   dog.brincar();
+  print(dog);
   
   Gato cat = Gato("Milk", 1);
   cat.comer(0.3);
